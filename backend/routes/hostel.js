@@ -31,7 +31,7 @@ hostelRouter.post("/", async (req, res) => {
       ])
       .select("*")
     // console.log(data)
-    res.send("registraction completed!!").redirect("/dashboard-hostel")
+    res.redirect("http://localhost:5173/dashboard-hostel")
   } catch (e) {
     console.log(e)
   }

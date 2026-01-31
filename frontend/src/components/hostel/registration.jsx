@@ -36,22 +36,23 @@ function HostelRegistration() {
     const Manager_Contact = document.getElementById("managerContact").value
     const Address = document.getElementById("address").value
 
-    const data = { "Hostel Name": Hostel_Name, "Owner Name": Owner_Name, "Owner Number": Owner_Number, "Manager": Manager_Name, "Manager Number": Manager_Contact, "Address": Address }
+    const data = { "Hostel_Name": Hostel_Name, "Owner_Name": Owner_Name, "Owner_Number": Owner_Number, "Manager_Name": Manager_Name, "Manager_Contact": Manager_Contact, "Address": Address }
     console.log(data)
-    const res = await fetch("localhost:3000/api/hostel", {
+    const res = await fetch("https://hive-delta-seven.vercel.app/api/hostel", {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=UTF-8"
       },
       body: JSON.stringify(data)
     })
+    // const dt=await res.json();
     console.log(res);
-    // setTimeout(() => {
-    //   setIsSubmitting(false);
-    //   setSubmitted(true);
-    //   // Reset after showing success
-    //   setTimeout(() => setSubmitted(false), 3000);
-    // }, 1500);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitted(true);
+      // Reset after showing success
+      setTimeout(() => setSubmitted(false), 3000);
+    }, 1500);
   };
 
   return (
