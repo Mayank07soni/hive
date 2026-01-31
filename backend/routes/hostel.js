@@ -1,5 +1,5 @@
 import { Router } from "express";
-import  {supabase}  from "../supabase.js";
+import { supabase } from "../supabase.js";
 const hostelRouter = Router();
 hostelRouter.get("/",async (req,res)=>{
     let data = await supabase
