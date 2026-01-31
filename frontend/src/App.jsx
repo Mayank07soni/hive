@@ -8,6 +8,7 @@ import HostelRegistration from "./components/hostel/registration.jsx";
 import HostelDashboard from "./components/hostel/hostel.jsx";
 import ComplainPage from "./Pages/ComplainPage.jsx";
 import MessMenuDisplay from "./components/mess/MessMenuDisplay.jsx"; 
+import MessMenuAdmin from './components/mess/MessMenuAdmin';
 function App() {
   return (
     <Router>
@@ -20,6 +21,7 @@ function App() {
         <Route path='signup/hostel' element={<HostelRegistration/>}/>
         <Route path='dashboard-hostel' element={<HostelDashboard/>}/>
         <Route path="/mess-menu" element={<MessMenuDisplay />} />
+        <Route path="/admin/mess-menu" element={<MessMenuAdmin />} />
         {/* Protected route */}
         <Route
           path="/dashboard"
