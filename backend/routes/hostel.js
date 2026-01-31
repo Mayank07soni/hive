@@ -23,14 +23,19 @@ hostelRouter.post("/", async (req, res) => {
     }
   });
   const domain = '@' + Hostel_Name;
-  const { data, error } = await supabase
-    .from('Hostel')
-    .insert([
-      { "Hostel Name": Hostel_Name, "Owner Name": Owner_Name, "Owner Number": Owner_Number, "Manager": Manager_Name, "Manager Number": Manager_Contact, "Address": Address, "Hostel Domain": domain },
-    ])
-    .select("*")
-  // console.log(data)
-  res.send("registraction completed!!").redirect("/dashboard-hostel")
+  try {
+    const { data, error } = await supabase
+      .from('Hostel')
+      .insert([
+        { "Hostel Name": Hostel_Name, "Owner Name": Owner_Name, "Owner Number": Owner_Number, "Manager": Manager_Name, "Manager Number": Manager_Contact, "Address": Address, "Hostel Domain": domain },
+      ])
+      .select("*")
+    // console.log(data)
+    res.send("registraction completed!!").redirect("/dashboard-hostel")
+  } catch (e) {
+    console.log(e)
+  }
+
 })
 
 export default hostelRouter;
