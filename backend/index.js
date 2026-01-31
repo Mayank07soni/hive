@@ -3,8 +3,8 @@ import "./config.js"
 import cors from 'cors'
 import complainrouter from './routes/complainRoutes.js'
 import dotenv from "dotenv"
-import cors from 'cors'
-import complainrouter from './routes/complainRoutes.js'
+
+
 import hostelRouter from "./routes/hostel.js";
 const PORT =process.env.PORT||3000;
 const app= express()

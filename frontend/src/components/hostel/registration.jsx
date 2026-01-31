@@ -21,23 +21,43 @@ function HostelRegistration() {
       [name]: value,
     }));
   };
-
-  const handleSubmit = (e) => {
+  const registerHostel = async (e) => {
+    console.log(e);
+  }
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    // console.log(e);
     // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitted(true);
-      // Reset after showing success
-      setTimeout(() => setSubmitted(false), 3000);
-    }, 1500);
+    const Hostel_Name = document.getElementById("hostelName").value
+    const Owner_Name = document.getElementById("ownerName").value
+    const Owner_Number = document.getElementById("ownerContact").value
+    const Manager_Name = document.getElementById("managerName").value
+    const Manager_Contact = document.getElementById("managerContact").value
+    const Address = document.getElementById("address").value
+
+    const data = { "Hostel Name": Hostel_Name, "Owner Name": Owner_Name, "Owner Number": Owner_Number, "Manager": Manager_Name, "Manager Number": Manager_Contact, "Address": Address }
+    console.log(data)
+    const res = await fetch("localhost:3000/api/hostel", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8"
+      },
+      body: JSON.stringify(data)
+    })
+    console.log(res);
+    // setTimeout(() => {
+    //   setIsSubmitting(false);
+    //   setSubmitted(true);
+    //   // Reset after showing success
+    //   setTimeout(() => setSubmitted(false), 3000);
+    // }, 1500);
   };
 
   return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center p-4 font-sans">
       <div className="w-full max-w-2xl bg-white rounded-xl shadow-xl overflow-hidden border border-slate-200">
-        
+
         {/* Header Section */}
         <div className="bg-slate-900 px-8 py-6 text-white relative overflow-hidden">
           <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-slate-800 rounded-full opacity-50 blur-xl"></div>
@@ -55,13 +75,13 @@ function HostelRegistration() {
         {/* Form Section */}
         <div className="p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
-            
+
             {/* Section: Property Details */}
             <div className="space-y-4">
               <h2 className="text-sm font-semibold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-2 mb-4">
                 Property Details
               </h2>
-              
+
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="col-span-2">
                   <label htmlFor="hostelName" className="block text-sm font-medium text-slate-700 mb-1.5">
@@ -113,7 +133,7 @@ function HostelRegistration() {
               </h2>
 
               <div className="grid gap-6 md:grid-cols-2">
-                
+
                 {/* Owner Info */}
                 <div className="space-y-4">
                   <div>
