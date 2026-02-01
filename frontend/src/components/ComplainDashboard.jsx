@@ -34,7 +34,7 @@ const ComplainDashboard = () => {
           <div className="text-center py-12">
             <p className="text-lg text-gray-600">Loading complaints...</p>
           </div>
-        ) : complaints.length === 1 ? (
+        ) : complaints.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-lg text-gray-600">No complaints found</p>
           </div>
@@ -69,10 +69,7 @@ const ComplainDashboard = () => {
                 <tbody className="bg-white divide-y divide-gray-200">
                   {complaints.map((c) => {
                     const dateObj = new Date(c.created_at);
-                    const date = dateObj.toLocaleDateString();
-                    const day = dateObj.toLocaleDateString("en-US", {
-                      weekday: "long",
-                    });
+                  
                     return (
                       <tr key={comp.id} className="hover:bg-gray-50 transition-colors">
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
